@@ -342,6 +342,8 @@ $$('.modal').forEach((modal) => {
 
 async function iniciar() {
   if (modoLocal) {
+    $('.form-note').textContent = 'Sem senha: este perfil fica somente neste navegador. Limpar os dados do site apaga as informações locais.'
+    $$('p').find(p => p.textContent.includes('Faça parte dessa experiência. Crie uma conta')).textContent = 'Abra seu perfil local e monte sua lista de favoritos neste navegador.'
     $('#btn-entrar').textContent = 'Perfil local'
     $('#btn-cadastrar').textContent = 'Começar'
     const aviso = criar('p', 'local-notice', 'Versão GitHub Pages · Seus dados e alterações ficam somente neste navegador, sem sincronização entre dispositivos.')
