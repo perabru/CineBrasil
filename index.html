@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0c0b0d" />
+  <meta name="description" content="CineBrasil — nossa cultura, nossas historias e os melhores filmes brasileiros em um so lugar." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <title>CineBrasil — O cinema é nosso</title>
+</head>
+<body>
+  <header class="topbar" id="inicio">
+    <a href="#inicio" class="brand" aria-label="CineBrasil, voltar ao inicio">
+      <span class="brand-mark" aria-hidden="true">▶</span><span>CINE<span>BRASIL</span></span>
+    </a>
+    <nav class="nav" aria-label="Menu principal">
+      <a class="nav-link current" href="#inicio">Início</a>
+      <a class="nav-link" href="#filmes">Filmes</a>
+      <button class="nav-link nav-button" type="button" id="nav-favoritos">Minha lista</button>
+    </nav>
+    <div class="top-actions">
+      <button class="icon-button" type="button" id="atalho-busca" aria-label="Buscar filmes" title="Buscar filmes">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.7"/><path d="m16 16 5 5"/></svg>
+      </button>
+      <button class="button button-outline" type="button" id="btn-entrar">Entrar</button>
+      <button class="button button-primary" type="button" id="btn-cadastrar">Criar conta</button>
+      <div class="user-control hidden" id="user-control">
+        <span class="avatar" id="user-avatar" aria-hidden="true">C</span>
+        <span class="username" id="user-name">Cinema</span>
+        <button class="signout" type="button" id="btn-sair" title="Sair da conta">Sair</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-titulo">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-inner content-width">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="pulse-dot"></span> UMA EXPERIÊNCIA 100% NACIONAL</div>
+          <h1 id="hero-titulo">NOSSO CINEMA.<br/><span>NOSSAS HISTÓRIAS.</span></h1>
+          <p class="hero-text">Do clássico ao contemporâneo. Um espaço feito para descobrir, organizar e celebrar o cinema brasileiro.</p>
+          <div class="hero-actions">
+            <a href="#filmes" class="button button-primary button-large"><span aria-hidden="true">▶</span> Explorar filmes</a>
+            <button class="button button-ghost button-large" type="button" id="hero-cadastro">Criar minha lista <span aria-hidden="true">↗</span></button>
+          </div>
+          <div class="hero-caption"><span class="line"></span> SUA PRÓXIMA HISTÓRIA COMEÇA AQUI</div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="film-stamp stamp-top">CINEMA<br/><b>BRASILEIRO</b><small>DESDE SEMPRE</small></div>
+          <div class="art-card art-back"><span class="art-kicker">CULTURA • IDENTIDADE</span><strong>ARTE<br/>EM CENA<span>.</span></strong><div class="art-orbit"></div><span class="art-foot">A SÉTIMA ARTE, DO NOSSO JEITO</span></div>
+          <div class="art-card art-front"><span class="art-kicker">UM MUNDO DE HISTÓRIAS</span><strong>FEITO<br/>AQUI<span>.</span></strong><div class="art-disc"></div><span class="art-foot">CINEBRASIL ORIGINAL</span></div>
+          <div class="film-stamp stamp-bottom">BR <span>✦</span> 2026</div>
+        </div>
+      </div>
+      <div class="hero-bottom" aria-hidden="true"></div>
+    </section>
+
+    <section class="feature-strip content-width" aria-label="Recursos da plataforma">
+      <div><span class="feature-icon">✦</span><span><b>Feito para o Brasil</b><small>Histórias que têm a nossa cara</small></span></div>
+      <div><span class="feature-icon">◈</span><span><b>Descubra seu favorito</b><small>Explore gêneros e títulos</small></span></div>
+      <div><span class="feature-icon">♡</span><span><b>Sua lista pessoal</b><small>Salve o que quer assistir</small></span></div>
+    </section>
+
+    <section class="catalog content-width" id="filmes" aria-labelledby="catalog-titulo">
+      <div class="section-heading">
+        <div><p class="section-kicker">CINEBRASIL / ACERVO</p><h2 id="catalog-titulo">Explore o <span>catálogo</span></h2><p class="section-subtitle">Encontre novas histórias para sua próxima sessão.</p></div>
+        <button class="button button-primary hidden" type="button" id="btn-add-filme">+ Adicionar filme</button>
+      </div>
+      <div class="catalog-tools">
+        <div class="filter-tabs" role="group" aria-label="Filtrar filmes">
+          <button class="tab active" type="button" data-tab="todos" aria-pressed="true">Todos os filmes</button>
+          <button class="tab" type="button" data-tab="favoritos" aria-pressed="false">Minha lista <span id="fav-count" class="tab-count">0</span></button>
+        </div>
+        <div class="filters-right">
+          <label class="searchbox"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.7"/><path d="m16 16 5 5"/></svg><input id="busca" type="search" placeholder="Buscar um filme..." aria-label="Buscar um filme" autocomplete="off" /></label>
+          <label class="selectbox"><span class="sr-only">Filtrar por gênero</span><select id="genero"><option value="">Todos os gêneros</option></select></label>
+        </div>
+      </div>
+      <div class="results-meta"><span id="results-count">Carregando catálogo...</span><span class="meta-decoration">● CINEBRASIL</span></div>
+      <div class="movie-grid" id="movie-grid" aria-live="polite"></div>
+      <div class="empty-state hidden" id="empty-state">
+        <div class="empty-symbol" aria-hidden="true">▣</div>
+        <h3 id="empty-title">Em breve, por aqui.</h3>
+        <p id="empty-description">Nosso catálogo está sendo preparado. Os filmes que você cadastrar vão aparecer aqui.</p>
+        <button class="button button-outline hidden" type="button" id="empty-add">Adicionar primeiro filme</button>
+      </div>
+      <div class="notice hidden" id="server-warning" role="status"></div>
+    </section>
+
+    <section class="closing content-width">
+      <div><span class="section-kicker">MAIS DO QUE FILMES</span><h2>O cinema brasileiro<br/>merece <em>ser visto.</em></h2><p>Faça parte dessa experiência. Crie uma conta e monte sua lista de favoritos.</p></div>
+      <button class="button button-primary button-large" type="button" id="closing-signup">Começar agora <span aria-hidden="true">↗</span></button>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="content-width footer-inner"><div class="brand footer-brand"><span class="brand-mark" aria-hidden="true">▶</span><span>CINE<span>BRASIL</span></span></div><p>Feito para aprender, criar e celebrar o cinema nacional.</p><small>Projeto educacional · 2026</small></div></footer>
+
+  <dialog class="modal" id="auth-modal" aria-labelledby="auth-title">
+    <div class="modal-inner modal-auth">
+      <button type="button" class="modal-close" data-close aria-label="Fechar">×</button>
+      <div class="modal-logo"><span class="brand-mark">▶</span> CINEBRASIL</div>
+      <p class="section-kicker">SUA EXPERIÊNCIA COMEÇA AQUI</p>
+      <h2 id="auth-title">Entre na sua conta</h2>
+      <p class="modal-intro" id="auth-subtitle">Acesse seus filmes favoritos e continue de onde parou.</p>
+      <form id="auth-form">
+        <label class="field hidden" id="nome-field"><span>Nome</span><input id="auth-nome" name="nome" type="text" autocomplete="name" maxlength="80" placeholder="Como podemos te chamar?" /></label>
+        <label class="field"><span>E-mail</span><input id="auth-email" name="email" type="email" autocomplete="email" placeholder="voce@exemplo.com" required maxlength="190" /></label>
+        <label class="field"><span>Senha</span><input id="auth-senha" name="senha" type="password" autocomplete="current-password" placeholder="No mínimo 8 caracteres" required minlength="8" maxlength="72" /></label>
+        <p class="form-error" id="auth-error" role="alert"></p>
+        <button class="button button-primary button-full" type="submit" id="auth-submit">Entrar</button>
+      </form>
+      <p class="auth-switch" id="auth-switch-text">Ainda não tem conta? <button type="button" id="auth-switch">Criar conta</button></p>
+      <p class="form-note">Seus dados de acesso ficam no servidor; a senha não é armazenada em texto puro.</p>
+    </div>
+  </dialog>
+
+  <dialog class="modal" id="movie-modal" aria-labelledby="detail-title">
+    <div class="modal-inner modal-movie">
+      <button type="button" class="modal-close" data-close aria-label="Fechar">×</button>
+      <div id="movie-detail"></div>
+    </div>
+  </dialog>
+
+  <dialog class="modal" id="editor-modal" aria-labelledby="editor-title">
+    <div class="modal-inner modal-editor">
+      <button type="button" class="modal-close" data-close aria-label="Fechar">×</button>
+      <p class="section-kicker">PAINEL ADMINISTRATIVO</p><h2 id="editor-title">Adicionar filme</h2><p class="modal-intro">Cadastre um título para aparecer no catálogo de todos os usuários.</p>
+      <form id="editor-form">
+        <div class="form-row"><label class="field grow"><span>Título *</span><input name="titulo" required maxlength="160" placeholder="Ex.: O filme brasileiro" /></label><label class="field small"><span>Ano *</span><input name="ano" type="number" required min="1895" max="2100" placeholder="2026" /></label></div>
+        <div class="form-row"><label class="field grow"><span>Gênero *</span><input name="genero" required maxlength="80" placeholder="Drama, Comédia..." /></label><label class="field small"><span>Duração (min) *</span><input name="duracao_min" type="number" min="1" max="1000" required placeholder="120" /></label></div>
+        <label class="field"><span>Sinopse *</span><textarea name="sinopse" rows="4" minlength="10" maxlength="4000" required placeholder="Escreva uma sinopse curta para o seu filme..."></textarea></label>
+        <label class="field"><span>URL da capa (opcional)</span><input name="capa_url" type="url" placeholder="https://exemplo.com/capa.jpg" /></label>
+        <label class="field"><span>URL do trailer (opcional)</span><input name="trailer_url" type="url" placeholder="https://exemplo.com/trailer" /></label>
+        <p class="form-error" id="editor-error" role="alert"></p>
+        <button class="button button-primary button-full" type="submit" id="editor-submit">Salvar filme</button>
+      </form>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
